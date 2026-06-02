@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería Multimedia — Curso en Línea</title>
+  <style>
+    /* =========================================================
+       RESET Y BASE
+    ========================================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg:        #0f1117;
+      --surface:   #1a1d27;
+      --surface2:  #22263a;
+      --border:    #2e3350;
+      --accent:    #4f8ef7;
+      --accent2:   #a78bfa;
+      --gold:      #f5c542;
+      --text:      #e8ecf4;
+      --text-muted:#8b93b0;
+      --radius:    14px;
+      --font-head: 'Georgia', 'Times New Roman', serif;
+      --font-body: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      --shadow:    0 4px 32px rgba(0,0,0,0.45);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* =========================================================
+       BARRA SUPERIOR
+    ========================================================= */
+    header {
+      background: linear-gradient(135deg, #0d1b3e 0%, #1a1d27 60%, #0f1117 100%);
+      border-bottom: 2px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% -20%, rgba(79,142,247,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    header h1 {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    header h1 span {
+      color: var(--accent);
+    }
+
+    header p.subtitle {
+      margin-top: 0.6rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       NAVEGACIÓN INTERNA
+    ========================================================= */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 2rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    /* =========================================================
+       LAYOUT PRINCIPAL
+    ========================================================= */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    /* =========================================================
+       TARJETA DE SECCIÓN
+    ========================================================= */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface2);
+    }
+
+    .card-header .icon {
+      font-size: 1.3rem;
+      line-height: 1;
+    }
+
+    .card-header h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card-header .meta {
+      margin-left: auto;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .card-body {
+      padding: 1.75rem 1.5rem;
+    }
+
+    /* =========================================================
+       TÍTULO DE RECURSO
+    ========================================================= */
+    .resource-title {
+      font-family: var(--font-head);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .resource-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* =========================================================
+       SEPARADOR
+    ========================================================= */
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* =========================================================
+       1. IMAGEN — <picture> con 2 fuentes
+    ========================================================= */
+    #imagen figure {
+      margin: 0;
+      position: relative;
+    }
+
+    #imagen picture {
+      display: block;
+    }
+
+    #imagen picture img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    #imagen figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       2. VIDEO — controles, poster, 2 formatos
+    ========================================================= */
+    #video video {
+      display: block;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #000;
+      max-height: 420px;
+    }
+
+    #video .video-meta {
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    #video .video-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* =========================================================
+       3. AUDIO — controles, loop desactivado
+    ========================================================= */
+    #audio .audio-wrapper {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    #audio .podcast-info {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    #audio .podcast-thumb {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #1e3a5f, #4f8ef7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    #audio .podcast-text h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    #audio .podcast-text p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    #audio audio {
+      width: 100%;
+      border-radius: 8px;
+      accent-color: var(--accent);
+    }
+
+    #audio .audio-note {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* =========================================================
+       4. IFRAME — Google Maps con sandbox correcto
+    ========================================================= */
+    #mapa .map-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    #mapa .map-container iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    #mapa .map-caption {
+      margin-top: 0.75rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+    }
+
+    /* =========================================================
+       PIE DE PÁGINA
+    ========================================================= */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    footer strong {
+      color: var(--accent);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.6rem; }
+      .card-body { padding: 1.25rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================
+       CABECERA
+  ====================================================== -->
+  <header>
+    <span class="badge">Tema 6 · Multimedia</span>
+    <h1>Galería de Recursos <span>Multimedia</span></h1>
+    <p class="subtitle">Curso en Línea — Actividad HTML puro, sin CSS externo, sin JavaScript</p>
+  </header>
+
+  <!-- ======================================================
+       NAVEGACIÓN INTERNA
+  ====================================================== -->
+  <nav aria-label="Secciones de la galería">
+    <a href="#imagen">🖼 Imagen</a>
+    <a href="#video">🎬 Video</a>
+    <a href="#audio">🎙 Podcast</a>
+    <a href="#mapa">🗺 Mapa</a>
+  </nav>
+
+  <!-- ======================================================
+       CONTENIDO PRINCIPAL
+  ====================================================== -->
+  <main>
+
+    <!-- ====================================================
+         1. IMAGEN — <picture> con 2 fuentes
+    ==================================================== -->
+    <section id="imagen" aria-labelledby="titulo-imagen">
+      <article class="card">
+        <div class="card-header">
+          <span class="icon" aria-hidden="true">🖼</span>
+          <h2 id="titulo-imagen">Imagen Principal</h2>
+          <span class="meta">Elemento &lt;picture&gt; · 2 fuentes</span>
+        </div>
+        <div class="card-body">
+          <p class="resource-title">Introducción al Diseño Web Moderno</p>
+          <p class="resource-desc">
+            Portada del módulo. Se utiliza <code>&lt;picture&gt;</code> para servir el formato más
+            eficiente según las capacidades del navegador: WebP como primera opción y JPEG como respaldo.
+          </p>
+
+          <figure>
+            <picture>
+              <!--
+                Fuente 1: formato WebP (navegadores modernos)
+                Fuente 2: formato JPEG (respaldo universal)
+              -->
+              <source
+                srcset="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=960&auto=format&q=80"
+                type="image/webp"
+              />
+              <source
+                srcset="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=960&auto=format&q=80&fm=jpg"
+                type="image/jpeg"
+              />
+              <img
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=960&auto=format&q=80"
+                alt="Pantalla de computadora mostrando código de programación web con colores sintácticos sobre fondo oscuro, representando el entorno de desarrollo del curso"
+                width="960"
+                height="540"
+                title="Entorno de desarrollo — Módulo de Diseño Web"
+                loading="eager"
+              />
+            </picture>
+            <figcaption>
+              Fig. 1 — Entorno de desarrollo web moderno. Imagen representativa del módulo de diseño.
+            </figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ====================================================
+         2. VIDEO — controles, poster, 2 formatos (<source>)
+    ==================================================== -->
+    <section id="video" aria-labelledby="titulo-video">
+      <article class="card">
+        <div class="card-header">
+          <span class="icon" aria-hidden="true">🎬</span>
+          <h2 id="titulo-video">Video de la Clase</h2>
+          <span class="meta">Elemento &lt;video&gt; · controles · poster · 2 formatos</span>
+        </div>
+        <div class="card-body">
+          <p class="resource-title">Clase 06 — Etiquetas Multimedia en HTML5</p>
+          <p class="resource-desc">
+            Grabación de la clase donde se explican los elementos <code>&lt;video&gt;</code>,
+            <code>&lt;audio&gt;</code> y <code>&lt;picture&gt;</code>. Disponible en formato
+            <strong>MP4</strong> (H.264) y <strong>WebM</strong> (VP9) para máxima compatibilidad.
+          </p>
+
+          <!--
+            • controls    → muestra barra de reproducción nativa
+            • poster      → imagen previa mientras carga
+            • preload     → "metadata" carga solo metadatos al inicio
+            • 2 <source>  → MP4 primero (soporte más amplio) + WebM
+            • <track>     → subtítulos para accesibilidad
+          -->
+          <video
+            controls
+            poster="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=960&auto=format&q=80"
+            preload="metadata"
+            width="960"
+            height="540"
+            title="Clase 06 — Etiquetas Multimedia en HTML5"
+            aria-label="Video de clase: Etiquetas Multimedia en HTML5. Duración aproximada 45 minutos."
+          >
+            <!--
+              Fuente 1: formato MP4 — H.264 / AAC
+              Mayor compatibilidad con navegadores y dispositivos
+            -->
+            <source
+              src="https://www.w3schools.com/html/mov_bbb.mp4"
+              type="video/mp4"
+            />
+            <!--
+              Fuente 2: formato WebM — VP9 / Opus
+              Mejor compresión en navegadores modernos (Chrome, Firefox, Edge)
+            -->
+            <source
+              src="https://www.w3schools.com/html/mov_bbb.webm"
+              type="video/webm"
+            />
+            <!--
+              Subtítulos (accesibilidad) — archivo .vtt referenciado
+            -->
+            <track
+              kind="subtitles"
+              srclang="es"
+              label="Español"
+              src="subtitulos-clase06.vtt"
+            />
+            <p>
+              Tu navegador no soporta reproducción de video HTML5.
+              <a href="https://www.w3schools.com/html/mov_bbb.mp4">Descarga el video aquí</a>.
+            </p>
+          </video>
+
+          <div class="video-meta" role="note" aria-label="Metadatos del video">
+            <span>🎞 Formatos: MP4 · WebM</span>
+            <span>⏱ Duración: 45 min aprox.</span>
+            <span>🔤 Subtítulos: Español</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ====================================================
+         3. AUDIO — controles, loop desactivado
+    ==================================================== -->
+    <section id="audio" aria-labelledby="titulo-audio">
+      <article class="card">
+        <div class="card-header">
+          <span class="icon" aria-hidden="true">🎙</span>
+          <h2 id="titulo-audio">Podcast del Módulo</h2>
+          <span class="meta">Elemento &lt;audio&gt; · controls · loop desactivado</span>
+        </div>
+        <div class="card-body">
+          <p class="resource-title">Episodio 6 — ¿Por qué importa la semántica en HTML?</p>
+          <p class="resource-desc">
+            Episodio de podcast complementario donde el instructor discute la importancia de las
+            etiquetas semánticas y el impacto en accesibilidad y SEO. Reproducción única (loop desactivado).
+          </p>
+
+          <div class="audio-wrapper">
+            <div class="podcast-info">
+              <div class="podcast-thumb" aria-hidden="true" title="Portada del podcast">🎙</div>
+              <div class="podcast-text">
+                <h3>WebDev en Español</h3>
+                <p>Episodio 6 · Semántica HTML · 28 min</p>
+              </div>
+            </div>
+
+            <!--
+              • controls → muestra reproductor nativo del navegador
+              • loop no se incluye (o se indica explícitamente como loop="false")
+                En HTML5 la ausencia del atributo loop equivale a loop desactivado.
+              • preload="metadata" → carga solo duración/metadatos al inicio
+            -->
+            <audio
+              controls
+              preload="metadata"
+              title="Podcast Episodio 6 — Semántica HTML — 28 minutos"
+              aria-label="Reproductor de audio: Podcast Episodio 6, Semántica HTML, duración 28 minutos. La repetición automática está desactivada."
+            >
+              <source
+                src="https://www.w3schools.com/html/horse.ogg"
+                type="audio/ogg"
+              />
+              <source
+                src="https://www.w3schools.com/html/horse.mp3"
+                type="audio/mpeg"
+              />
+              <p>
+                Tu navegador no soporta reproducción de audio HTML5.
+                <a href="https://www.w3schools.com/html/horse.mp3">Descarga el audio aquí</a>.
+              </p>
+            </audio>
+
+            <p class="audio-note">
+              ℹ El loop automático está <strong>desactivado</strong>. El audio se reproducirá una sola vez.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ====================================================
+         4. IFRAME — Google Maps con sandbox correcto
+    ==================================================== -->
+    <section id="mapa" aria-labelledby="titulo-mapa">
+      <article class="card">
+        <div class="card-header">
+          <span class="icon" aria-hidden="true">🗺</span>
+          <h2 id="titulo-mapa">Mapa de Ubicación</h2>
+          <span class="meta">Elemento &lt;iframe&gt; · sandbox correcto</span>
+        </div>
+        <div class="card-body">
+          <p class="resource-title">Sede Presencial del Curso — San José, Costa Rica</p>
+          <p class="resource-desc">
+            Ubicación de las instalaciones donde se imparten las sesiones presenciales del curso.
+            El mapa se integra mediante <code>&lt;iframe&gt;</code> con atributos
+            <code>sandbox</code> configurados para permitir el correcto funcionamiento de
+            Google Maps: scripts, formularios, ventanas emergentes y orientación del dispositivo.
+          </p>
+
+          <div class="map-container">
+            <!--
+              sandbox en Google Maps requiere MÍNIMO:
+                allow-scripts        → ejecutar JS del mapa
+                allow-same-origin    → acceso a cookies/storage de Google
+                allow-forms          → búsquedas dentro del mapa
+                allow-popups         → abrir "Ver mapa más grande"
+                allow-popups-to-escape-sandbox → que la nueva ventana no esté sandboxed
+
+              referrerpolicy="no-referrer-when-downgrade" → práctica recomendada
+              loading="lazy"   → carga diferida para rendimiento
+            -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.9756!2d-84.0879!3d9.9281!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e3b4d8b3c1b1%3A0x0!2sSan+Jos%C3%A9%2C+Costa+Rica!5e0!3m2!1ses!2scr!4v1680000000000!5m2!1ses!2scr"
+              title="Mapa de Google Maps mostrando la ubicación de la sede del curso en San José, Costa Rica"
+              aria-label="Mapa interactivo de Google Maps: Sede del curso en San José, Costa Rica. Puedes desplazarte, hacer zoom y ver la ubicación exacta."
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+              referrerpolicy="no-referrer-when-downgrade"
+              loading="lazy"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <p class="map-caption">
+            📍 San José, Costa Rica — Sede presencial del curso.
+            <a
+              href="https://maps.google.com/?q=San+Jos%C3%A9,+Costa+Rica"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Abrir San José, Costa Rica en Google Maps en una nueva pestaña"
+            >Abrir en Google Maps ↗</a>
+          </p>
+
+          <hr class="divider" />
+
+          <details>
+            <summary style="cursor:pointer; color: var(--accent); font-weight:600; font-size:0.88rem; user-select:none;">
+              ℹ️ ¿Por qué estos atributos sandbox?
+            </summary>
+            <div style="margin-top:0.75rem; font-size:0.85rem; color: var(--text-muted); line-height:1.8;">
+              <dl style="display:grid; grid-template-columns: auto 1fr; gap:0.25rem 1rem;">
+                <dt style="color:var(--gold); font-weight:700;">allow-scripts</dt>
+                <dd>Permite que el JS de Google Maps se ejecute (mapas interactivos).</dd>
+                <dt style="color:var(--gold); font-weight:700;">allow-same-origin</dt>
+                <dd>Permite acceder a cookies y almacenamiento de dominio Google.</dd>
+                <dt style="color:var(--gold); font-weight:700;">allow-forms</dt>
+                <dd>Habilita el campo de búsqueda dentro del mapa.</dd>
+                <dt style="color:var(--gold); font-weight:700;">allow-popups</dt>
+                <dd>Permite abrir "Ver mapa más grande" en nueva ventana.</dd>
+                <dt style="color:var(--gold); font-weight:700;">allow-popups-to-escape-sandbox</dt>
+                <dd>La ventana nueva NO hereda las restricciones del sandbox.</dd>
+              </dl>
+            </div>
+          </details>
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- ======================================================
+       PIE DE PÁGINA
+  ====================================================== -->
+  <footer>
+    <p>
+      <strong>Galería Multimedia</strong> · Actividad — Tema 6 · Curso en Línea
+    </p>
+    <p style="margin-top:0.4rem;">
+      Construido con HTML5 puro · Sin CSS externo · Sin JavaScript externo
+    </p>
+  </footer>
+
+</body>
+</html>

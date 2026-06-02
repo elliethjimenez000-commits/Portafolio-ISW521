@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Congreso Universitario de Tecnología y Sostenibilidad 2025 — UTN Sede San Carlos</title>
+  <meta name="description" content="Participa en el Congreso Universitario de Tecnología y Sostenibilidad, 15 al 17 de agosto 2025, UTN Sede San Carlos. Ejes: IA Ética, Energías Renovables y Software para el Bien Común.">
+
+  <style>
+    :root {
+      --color-primario:   #003366;
+      --color-secundario: #0055a5;
+      --color-fondo:      #f0f0f0;
+      --color-blanco:     #ffffff;
+      --color-borde:      #cccccc;
+      --color-texto:      #222222;
+      --radio-borde:      4px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--color-fondo);
+      color: var(--color-texto);
+      line-height: 1.6;
+    }
+
+    /* ── Skip link ── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: var(--color-primario);
+      color: var(--color-blanco);
+      padding: 0.5rem 1rem;
+      z-index: 1000;
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* ── Header ── */
+    header {
+      background: var(--color-primario);
+      color: var(--color-blanco);
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin: 0.25rem 0;
+      opacity: 0.9;
+    }
+
+    /* ── Nav ── */
+    nav {
+      background: var(--color-secundario);
+      padding: 10px 20px;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    nav a {
+      color: var(--color-blanco);
+      text-decoration: none;
+      padding: 4px 8px;
+      border-radius: var(--radio-borde);
+      transition: background 0.2s;
+    }
+    nav a:hover,
+    nav a:focus {
+      background: rgba(255, 255, 255, 0.2);
+      outline: 2px solid white;
+    }
+
+    /* ── Main ── */
+    main {
+      padding: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ── Tarjetas ── */
+    .card {
+      background: var(--color-blanco);
+      border: 1px solid var(--color-borde);
+      border-radius: var(--radio-borde);
+      padding: 1.5rem;
+      margin: 1rem 0;
+    }
+
+    /* ── Tabla ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td, th {
+      border: 1px solid var(--color-borde);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    thead th {
+      background: var(--color-secundario);
+      color: var(--color-blanco);
+    }
+    tfoot th,
+    tfoot td {
+      background: #e8f0fb;
+      font-weight: bold;
+    }
+    caption {
+      caption-side: top;
+      text-align: left;
+      font-weight: bold;
+      padding: 0.5rem 0;
+      color: var(--color-primario);
+    }
+    tbody tr:nth-child(even) {
+      background: #f8f8f8;
+    }
+
+    /* ── Formulario ── */
+    label {
+      display: block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 4px;
+      border: 1px solid var(--color-borde);
+      border-radius: var(--radio-borde);
+      font-family: inherit;
+      font-size: 1rem;
+    }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid var(--color-secundario);
+      outline-offset: 2px;
+    }
+    fieldset {
+      border: 1px solid var(--color-secundario);
+      border-radius: var(--radio-borde);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    legend {
+      font-weight: bold;
+      color: var(--color-primario);
+      padding: 0 0.5rem;
+    }
+    small {
+      display: block;
+      color: #666;
+      font-size: 0.82rem;
+      margin-top: 2px;
+    }
+    .campo-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .campo-checkbox input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+    .campo-checkbox label {
+      margin-top: 0;
+      font-weight: normal;
+      cursor: pointer;
+    }
+
+    /* ── Botón ── */
+    .btn {
+      background: var(--color-secundario);
+      color: var(--color-blanco);
+      padding: 10px 24px;
+      border: none;
+      border-radius: var(--radio-borde);
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 1.25rem;
+      transition: background 0.2s;
+    }
+    .btn:hover,
+    .btn:focus {
+      background: var(--color-primario);
+      outline: 2px solid var(--color-primario);
+      outline-offset: 2px;
+    }
+
+    /* ── Ponentes ── */
+    .ponentes-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .ponente {
+      background: var(--color-blanco);
+      border: 1px solid var(--color-borde);
+      border-left: 4px solid var(--color-secundario);
+      border-radius: var(--radio-borde);
+      padding: 1rem;
+    }
+    .ponente h3 {
+      margin: 0 0 0.25rem;
+      color: var(--color-primario);
+      font-size: 1rem;
+    }
+    .ponente .especialidad {
+      color: #555;
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem;
+    }
+    .ponente .ponencia {
+      font-style: italic;
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* ── Video ── */
+    .video-contenedor video {
+      width: 100%;
+      border-radius: var(--radio-borde);
+      display: block;
+    }
+
+    /* ── Contacto ── */
+    address {
+      font-style: normal;
+      margin: 0.75rem 0;
+      padding: 1rem;
+      background: #f5f8ff;
+      border-left: 4px solid var(--color-secundario);
+      border-radius: var(--radio-borde);
+    }
+    address a {
+      color: var(--color-secundario);
+    }
+
+    /* ── Enlace tarjeta ── */
+    .enlace-card {
+      display: block;
+      color: var(--color-secundario);
+      text-decoration: none;
+      border: 1px solid var(--color-borde);
+      border-radius: var(--radio-borde);
+      padding: 1rem;
+      margin-top: 0.75rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .enlace-card:hover,
+    .enlace-card:focus {
+      background: #f0f5ff;
+      border-color: var(--color-secundario);
+      outline: 2px solid var(--color-secundario);
+    }
+    .enlace-card p {
+      margin: 0.2rem 0;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--color-primario);
+      color: var(--color-blanco);
+      padding: 1.25rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    footer p {
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      header h1  { font-size: 1.3rem; }
+      nav ul     { flex-direction: column; }
+      td, th     { padding: 6px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a href="#contenido-principal" class="skip-link">Saltar al contenido principal</a>
+
+  <header>
+    <h1>Congreso Universitario de Tecnología y Sostenibilidad</h1>
+    <p>UTN Sede San Carlos · 15, 16 y 17 de Agosto 2025</p>
+    <p>Innovar para un futuro verde y digital</p>
+  </header>
+
+  <nav aria-label="Navegación principal">
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#ponentes">Ponentes</a></li>
+      <li><a href="#horario">Horario</a></li>
+      <li><a href="#registro">Registro</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
+    </ul>
+  </nav>
+
+  <main id="contenido-principal">
+
+    <section id="inicio" class="card" aria-labelledby="titulo-congreso">
+      <h2 id="titulo-congreso">Sobre el Congreso</h2>
+      <p>
+        El Congreso Universitario de Tecnología y Sostenibilidad es el evento académico
+        más importante del año en la Sede San Carlos. Reunirá a investigadores, docentes,
+        estudiantes y profesionales del sector tecnológico para discutir los desafíos
+        del desarrollo sostenible en la era digital.
+      </p>
+      <p>
+        Este año el congreso se enfoca en tres ejes temáticos: Inteligencia Artificial Ética,
+        Energías Renovables y Software para el Bien Común.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="titulo-video">
+      <h2 id="titulo-video">Video Promocional</h2>
+      <div class="video-contenedor">
+        <video
+          controls
+          poster="img/poster_congreso.jpg"
+          aria-label="Video promocional del Congreso Universitario de Tecnología y Sostenibilidad 2025">
+          <source src="video/promo_congreso.mp4"  type="video/mp4">
+          <source src="video/promo_congreso.webm" type="video/webm">
+          <p>
+            Tu navegador no soporta reproducción de video HTML5.
+            <a href="video/promo_congreso.mp4">Descarga el video promocional aquí</a>.
+          </p>
+        </video>
+      </div>
+    </section>
+
+    <section id="ponentes" class="card" aria-labelledby="titulo-ponentes">
+      <h2 id="titulo-ponentes">Ponentes Destacados</h2>
+      <div class="ponentes-lista">
+
+        <article class="ponente">
+          <h3>Dra. Laura Rodríguez</h3>
+          <p class="especialidad">Especialista en Inteligencia Artificial Ética — UCR</p>
+          <p class="ponencia">"Sesgos algorítmicos en sistemas de contratación: el caso latinoamericano"</p>
+        </article>
+
+        <article class="ponente">
+          <h3>Ing. Carlos Mendoza</h3>
+          <p class="especialidad">Director de Innovación — Instituto Costarricense de Electricidad</p>
+          <p class="ponencia">"Microrredes eléctricas rurales con energía solar: experiencias en zonas alejadas"</p>
+        </article>
+
+        <article class="ponente">
+          <h3>MSc. Patricia Vega</h3>
+          <p class="especialidad">Investigadora en Software Libre — TEC</p>
+          <p class="ponencia">"Código abierto como herramienta para la democratización del conocimiento"</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="horario" class="card" aria-labelledby="titulo-horario">
+      <h2 id="titulo-horario">Horario del Congreso</h2>
+      <table>
+        <caption>Horario del Congreso — 15, 16 y 17 de agosto de 2025, UTN Sede San Carlos</caption>
+        <thead>
+          <tr>
+            <th scope="col">Hora</th>
+            <th scope="col">Lunes 15 Ago</th>
+            <th scope="col">Martes 16 Ago</th>
+            <th scope="col">Miércoles 17 Ago</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">8:00 – 9:00</th>
+            <td>Acreditación y Bienvenida</td>
+            <td>Apertura del día</td>
+            <td>Apertura del día</td>
+          </tr>
+          <tr>
+            <th scope="row">9:00 – 10:30</th>
+            <td>Conferencia Magistral: Dra. Rodríguez</td>
+            <td>Taller de Machine Learning</td>
+            <td>Panel: Futuro Verde</td>
+          </tr>
+          <tr>
+            <th scope="row">10:30 – 11:00</th>
+            <td>Coffee Break</td>
+            <td>Coffee Break</td>
+            <td>Coffee Break</td>
+          </tr>
+          <tr>
+            <th scope="row">11:00 – 12:30</th>
+            <td>Mesa Redonda: IA y Sociedad</td>
+            <td>Presentaciones de investigación</td>
+            <td>Conferencia: Ing. Mendoza</td>
+          </tr>
+          <tr>
+            <th scope="row">12:30 – 14:00</th>
+            <td>Almuerzo</td>
+            <td>Almuerzo</td>
+            <td>Almuerzo y clausura</td>
+          </tr>
+          <tr>
+            <th scope="row">14:00 – 15:30</th>
+            <td>Taller: Energías Renovables</td>
+            <td>Conferencia: MSc. Vega</td>
+            <td>Ceremonia de clausura</td>
+          </tr>
+          <tr>
+            <th scope="row">15:30 – 17:00</th>
+            <td>Exposición de Proyectos</td>
+            <td>Networking y actividades</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th scope="row">Total horas</th>
+            <td>8 horas</td>
+            <td>8 horas</td>
+            <td>6 horas</td>
+          </tr>
+        </tfoot>
+      </table>
+    </section>
+
+    <section id="registro" class="card" aria-labelledby="titulo-registro">
+      <h2 id="titulo-registro">Formulario de Registro</h2>
+      <form action="#" method="post" novalidate>
+
+        <fieldset>
+          <legend>Datos Personales</legend>
+
+          <label for="nombre">Nombre completo <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            placeholder="Ingrese su nombre completo"
+            autocomplete="name"
+            required
+            aria-required="true">
+
+          <label for="cedula">Número de cédula <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="cedula"
+            name="cedula"
+            placeholder="X-XXXX-XXXX"
+            pattern="[0-9]{1}-[0-9]{4}-[0-9]{4}"
+            autocomplete="off"
+            required
+            aria-required="true"
+            aria-describedby="cedula-ayuda">
+          <small id="cedula-ayuda">Formato: 1-2345-6789</small>
+
+          <label for="correo">Correo electrónico institucional <span aria-hidden="true">*</span></label>
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            placeholder="usuario@utn.ac.cr"
+            autocomplete="email"
+            required
+            aria-required="true">
+
+          <label for="telefono">Número de teléfono</label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            placeholder="XXXX-XXXX"
+            pattern="[0-9]{4}-[0-9]{4}"
+            autocomplete="tel"
+            aria-describedby="telefono-ayuda">
+          <small id="telefono-ayuda">Formato: 8888-8888</small>
+
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferencias del Congreso</legend>
+
+          <label for="tipo-participante">Tipo de participante <span aria-hidden="true">*</span></label>
+          <select
+            id="tipo-participante"
+            name="tipo_participante"
+            required
+            aria-required="true">
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="estudiante-grado">Estudiante de grado</option>
+            <option value="estudiante-posgrado">Estudiante de posgrado</option>
+            <option value="docente">Docente universitario</option>
+            <option value="profesional">Profesional externo</option>
+            <option value="investigador">Investigador</option>
+          </select>
+
+          <label for="carrera">Carrera o Departamento</label>
+          <input
+            type="text"
+            id="carrera"
+            name="carrera"
+            list="lista-carreras"
+            placeholder="Busque o ingrese su carrera">
+          <datalist id="lista-carreras">
+            <option value="Ingeniería en Sistemas"></option>
+            <option value="Ingeniería en Electrónica"></option>
+            <option value="Administración de Empresas"></option>
+            <option value="Contaduría Pública"></option>
+            <option value="Ingeniería en Construcción"></option>
+            <option value="Seguridad e Higiene Laboral"></option>
+            <option value="Trabajo Social"></option>
+            <option value="Educación"></option>
+            <option value="Otra"></option>
+          </datalist>
+
+          <label for="talleres">¿Cuáles talleres le interesan?</label>
+          <input
+            type="text"
+            id="talleres"
+            name="talleres"
+            placeholder="Ej: Machine Learning, Energías Renovables...">
+
+          <label for="necesidades">Necesidades especiales o requerimientos de accesibilidad</label>
+          <textarea
+            id="necesidades"
+            name="necesidades"
+            rows="3"
+            placeholder="Indique si tiene alguna necesidad especial..."></textarea>
+
+          <label for="modalidad">Modalidad de asistencia <span aria-hidden="true">*</span></label>
+          <select
+            id="modalidad"
+            name="modalidad"
+            required
+            aria-required="true">
+            <option value="" disabled selected>Seleccione modalidad</option>
+            <option value="presencial">Presencial</option>
+            <option value="virtual">Virtual</option>
+            <option value="hibrida">Híbrida</option>
+          </select>
+
+        </fieldset>
+
+        <div class="campo-checkbox">
+          <input type="checkbox" id="terminos" name="terminos" required aria-required="true">
+          <label for="terminos">Acepto los términos y condiciones del congreso</label>
+        </div>
+
+        <div class="campo-checkbox">
+          <input type="checkbox" id="datos" name="datos_academicos">
+          <label for="datos">Autorizo el uso de mis datos para fines académicos</label>
+        </div>
+
+        <button class="btn" type="submit">Enviar Registro</button>
+
+      </form>
+    </section>
+
+    <section id="ubicacion" class="card" aria-labelledby="titulo-ubicacion">
+      <h2 id="titulo-ubicacion">Ubicación</h2>
+      <p>UTN Sede San Carlos, Ciudad Quesada, Alajuela, Costa Rica</p>
+      <p>Carretera Florencia – Ciudad Quesada, frente al Banco Nacional</p>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.1234567890!2d-84.4234567!3d10.3234567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDE5JzI0LjQiTiA4NMKwMjUnMjQuNCJX!5e0!3m2!1ses!2scr!4v1234567890"
+        width="100%"
+        height="400"
+        style="border: 0; border-radius: 4px; margin-top: 1rem; display: block;"
+        allowfullscreen=""
+        loading="lazy"
+        sandbox="allow-scripts allow-same-origin"
+        title="Mapa de ubicación: UTN Sede San Carlos, Ciudad Quesada, Alajuela, Costa Rica">
+      </iframe>
+    </section>
+
+    <section class="card" aria-labelledby="titulo-info">
+      <h2 id="titulo-info">Información Importante</h2>
+      <p>Para más información sobre el congreso, contacte a la comisión organizadora:</p>
+      <address>
+        <strong>Contacto Principal</strong><br>
+        <a href="mailto:congreso.tecnologia@utn.ac.cr">congreso.tecnologia@utn.ac.cr</a><br>
+        Teléfono: <a href="tel:+50624013000">2401-3000</a> ext. 5200
+      </address>
+      <p>También puede visitar nuestra página de redes sociales:</p>
+      <a href="https://www.utn.ac.cr" class="enlace-card" target="_blank" rel="noopener noreferrer">
+        <p><strong>Visitar sitio oficial de la UTN</strong></p>
+        <p>www.utn.ac.cr · Sede San Carlos</p>
+      </a>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 UTN Sede San Carlos. Todos los derechos reservados.</p>
+    <p>Congreso Universitario de Tecnología y Sostenibilidad</p>
+    <p>Desarrollado por el Departamento de Tecnología de Información</p>
+  </footer>
+
+</body>
+</html>
