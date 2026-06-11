@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- ============================================================
+       META & SEO
+       ============================================================ -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Dashboard de Restauración Mecánica — Toyota Land Cruiser Prado 2024, Color Bronce Óxido. Seguimiento de estado mecánico, inventario de repuestos y gestión del proyecto." />
+  <meta name="keywords"
+    content="restauración, mecánica, Toyota, Land Cruiser, Prado, 2024, dashboard, repuestos, taller" />
+  <meta name="author" content="Taller de Restauración Premium" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dashboard · Restauración Toyota Land Cruiser Prado 2024" />
+  <meta property="og:description"
+    content="Panel de control para el seguimiento integral del proyecto de restauración mecánica." />
+  <meta property="og:type" content="website" />
+
+  <!-- Tema del navegador -->
+  <meta name="theme-color" content="#0D1117" />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- ============================================================
+       TIPOGRAFÍA — Google Fonts
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <!-- ============================================================
+       HOJA DE ESTILOS EXTERNA
+       ============================================================ -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <title>Dashboard · Restauración Toyota Land Cruiser Prado 2024 | Bronce Óxido</title>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       CONTENEDOR PRINCIPAL DEL DASHBOARD
+       Grid asimétrico de 2 columnas (2fr / 1fr)
+       ============================================================ -->
+  <div class="dashboard-wrapper">
+
+
+    <!-- ============================================================
+         HEADER — Barra de navegación superior
+         Área: header (100% del ancho)
+         ============================================================ -->
+    <header class="dashboard-header" role="banner">
+
+      <!-- Marca / Identidad del sistema -->
+      <div class="header-brand">
+        <div class="header-brand__icon" aria-hidden="true">🔧</div>
+        <div>
+          <h1 class="header-brand__title">MecaTrack Pro</h1>
+          <p class="header-brand__subtitle">Sistema de Gestión de Restauraciones</p>
+        </div>
+      </div>
+
+      <!-- Identificación del vehículo en curso -->
+      <div class="header-vehicle-id" role="note" aria-label="Vehículo activo">
+        <span class="header-vehicle-id__make">Toyota Land Cruiser Prado</span>
+        <span class="header-vehicle-id__separator" aria-hidden="true">·</span>
+        <span class="header-vehicle-id__year">2024</span>
+        <span class="header-vehicle-id__separator" aria-hidden="true">·</span>
+        <span class="badge badge--bronze">Bronce Óxido</span>
+      </div>
+
+      <!-- Controles del encabezado -->
+      <nav class="header-controls" aria-label="Controles del panel">
+        <span class="badge badge--success">
+          <span class="status-dot status-dot--active" aria-hidden="true"></span>
+          En Progreso
+        </span>
+        <button class="btn btn--secondary btn--sm" type="button" id="btn-exportar"
+          aria-label="Exportar reporte del proyecto">
+          📄 Exportar
+        </button>
+        <button class="btn btn--primary btn--sm" type="button" id="btn-actualizar"
+          aria-label="Actualizar datos del dashboard">
+          🔄 Actualizar
+        </button>
+      </nav>
+
+    </header>
+    <!-- /HEADER -->
+
+
+    <!-- ============================================================
+         VEHICLE HERO — Sección visual principal del vehículo
+         Área: hero (columna izquierda 2fr)
+         ============================================================ -->
+    <section class="vehicle-hero" aria-labelledby="hero-title">
+
+      <!-- Imagen principal del vehículo -->
+      <div class="hero-image-wrapper">
+        <img src="toyota_prado_hero.png"
+          alt="Toyota Land Cruiser Prado 2024 en color Bronce Óxido durante el proceso de restauración mecánica integral"
+          width="1200" height="675" loading="eager" fetchpriority="high" />
+        <div class="hero-image-overlay" aria-hidden="true"></div>
+        <!-- Badge sobre la imagen -->
+        <div class="hero-image-badge" role="status" aria-live="polite">
+          <span class="badge badge--warning">⚡ Restauración Activa</span>
+        </div>
+      </div>
+
+      <!-- Contenido textual del hero -->
+      <div class="hero-content">
+
+        <!-- Título e identificación -->
+        <div>
+          <h2 class="hero-title" id="hero-title">Land Cruiser Prado</h2>
+          <p class="hero-subtitle">2024 · Bronce Óxido · VIN: JTEBX9FJ4PK000742</p>
+        </div>
+
+        <!-- Nota descriptiva del proyecto -->
+        <blockquote class="hero-notes">
+          Proyecto de restauración mecánica integral. Intervención completa de motor, suspensión,
+          frenos y sistema eléctrico. Objetivo: devolver las condiciones óptimas de fábrica con
+          mejoras de rendimiento para terrenos off-road exigentes.
+        </blockquote>
+
+        <!-- Indicadores principales del proyecto -->
+        <dl class="hero-specs-grid">
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Año del vehículo</dt>
+            <dd class="spec-item__value spec-item__value--highlight">2024</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Color original</dt>
+            <dd class="spec-item__value spec-item__value--highlight">Bronce Óxido</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Kilómetros actuales</dt>
+            <dd class="spec-item__value">48,320 km</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Motor</dt>
+            <dd class="spec-item__value">2.8L Diesel Turbo</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Tracción</dt>
+            <dd class="spec-item__value">4WD Permanente</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Transmisión</dt>
+            <dd class="spec-item__value">Automática 6 vel.</dd>
+          </div>
+
+        </dl>
+
+        <!-- Progreso general del proyecto -->
+        <div class="hero-progress-block" role="group" aria-labelledby="progress-label">
+          <div class="hero-progress-header">
+            <span class="hero-progress-label" id="progress-label">Avance general del proyecto</span>
+            <span class="hero-progress-pct" aria-live="polite">67%</span>
+          </div>
+          <div class="progress-bar hero-progress-bar" role="progressbar" aria-valuenow="67" aria-valuemin="0"
+            aria-valuemax="100" aria-label="Progreso general: 67% completado">
+            <div class="progress-bar__fill" style="width: 67%;" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Métricas clave en fila -->
+        <dl class="hero-specs-grid">
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Fecha estimada de entrega</dt>
+            <dd class="spec-item__value spec-item__value--highlight">15 Jul 2026</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Presupuesto total</dt>
+            <dd class="spec-item__value">$85,000.00</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Presupuesto utilizado</dt>
+            <dd class="spec-item__value spec-item__value--highlight">$57,340.00</dd>
+          </div>
+
+          <div class="spec-item">
+            <dt class="spec-item__label">Días restantes</dt>
+            <dd class="spec-item__value">35 días</dd>
+          </div>
+
+        </dl>
+
+      </div>
+      <!-- /hero-content -->
+
+    </section>
+    <!-- /VEHICLE HERO -->
+
+
+    <!-- ============================================================
+         PROJECT SIDEBAR — Columna lateral del proyecto
+         Área: sidebar (columna derecha 1fr)
+         ============================================================ -->
+    <aside class="project-sidebar" aria-labelledby="sidebar-heading">
+
+      <h2 class="visually-hidden" id="sidebar-heading">Información del Proyecto</h2>
+
+      <!-- Widget: Responsable y equipo -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget__header">
+          <h3 class="sidebar-widget__title">
+            <span class="sidebar-widget__title-icon" aria-hidden="true">👤</span>
+            Responsable del Proyecto
+          </h3>
+        </div>
+
+        <!-- Mecánico asignado -->
+        <div class="mechanic-card">
+          <div class="mechanic-card__avatar" role="img" aria-label="Avatar de Ing. Roberto Flores">
+            🧑‍🔧
+          </div>
+          <div class="mechanic-card__info">
+            <p class="mechanic-card__name">Ing. Roberto Flores</p>
+            <p class="mechanic-card__role">Mecánico Principal · Esp. Toyota</p>
+          </div>
+          <div class="mechanic-card__status" aria-label="Estado: disponible">
+            <span class="status-dot status-dot--active" aria-hidden="true"></span>
+            Activo
+          </div>
+        </div>
+      </div>
+      <!-- /Widget responsable -->
+
+      <!-- Widget: Detalles administrativos del proyecto -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget__header">
+          <h3 class="sidebar-widget__title">
+            <span class="sidebar-widget__title-icon" aria-hidden="true">📋</span>
+            Detalles del Proyecto
+          </h3>
+        </div>
+
+        <dl class="summary-metric-list">
+
+          <div class="summary-metric">
+            <dt class="summary-metric__label">Taller encargado</dt>
+            <dd class="summary-metric__value summary-metric__value--bronze">AutoPremium MX</dd>
+          </div>
+
+          <div class="summary-metric">
+            <dt class="summary-metric__label">Prioridad</dt>
+            <dd class="summary-metric__value">
+              <span class="badge badge--warning">🔥 Alta</span>
+            </dd>
+          </div>
+
+          <div class="summary-metric">
+            <dt class="summary-metric__label">Fecha de inicio</dt>
+            <dd class="summary-metric__value text-mono">10 Abr 2026</dd>
+          </div>
+
+          <div class="summary-metric">
+            <dt class="summary-metric__label">Fecha de entrega</dt>
+            <dd class="summary-metric__value summary-metric__value--bronze text-mono">15 Jul 2026</dd>
+          </div>
+
+          <div class="summary-metric">
+            <dt class="summary-metric__label">Estado administrativo</dt>
+            <dd class="summary-metric__value">
+              <span class="badge badge--blue">📝 Aprobado</span>
+            </dd>
+          </div>
+
+          <div class="summary-metric">
+            <dt class="summary-metric__label">N.° de orden</dt>
+            <dd class="summary-metric__value text-mono">ORD-2026-0047</dd>
+          </div>
+
+          <div class="summary-metric">
+            <dt class="summary-metric__label">Tipo de servicio</dt>
+            <dd class="summary-metric__value">Restauración Integral</dd>
+          </div>
+
+        </dl>
+      </div>
+      <!-- /Widget detalles -->
+
+      <!-- Widget: Timeline de fases del proyecto -->
+      <div class="sidebar-widget">
+        <div class="sidebar-widget__header">
+          <h3 class="sidebar-widget__title">
+            <span class="sidebar-widget__title-icon" aria-hidden="true">📅</span>
+            Fases del Proyecto
+          </h3>
+        </div>
+
+        <ol class="timeline" aria-label="Línea de tiempo de fases del proyecto">
+
+          <li class="timeline-item timeline-item--done">
+            <p class="timeline-item__title">Diagnóstico inicial</p>
+            <time class="timeline-item__date" datetime="2026-04-10">10 Abr 2026 · Completado</time>
+          </li>
+
+          <li class="timeline-item timeline-item--done">
+            <p class="timeline-item__title">Desmontaje y evaluación</p>
+            <time class="timeline-item__date" datetime="2026-04-25">25 Abr 2026 · Completado</time>
+          </li>
+
+          <li class="timeline-item timeline-item--done">
+            <p class="timeline-item__title">Adquisición de repuestos</p>
+            <time class="timeline-item__date" datetime="2026-05-12">12 May 2026 · Completado</time>
+          </li>
+
+          <li class="timeline-item timeline-item--active">
+            <p class="timeline-item__title">Restauración mecánica</p>
+            <time class="timeline-item__date" datetime="2026-05-20">20 May 2026 · En curso</time>
+          </li>
+
+          <li class="timeline-item">
+            <p class="timeline-item__title">Pintura y carrocería</p>
+            <time class="timeline-item__date" datetime="2026-07-01">01 Jul 2026 · Pendiente</time>
+          </li>
+
+          <li class="timeline-item">
+            <p class="timeline-item__title">Control de calidad y entrega</p>
+            <time class="timeline-item__date" datetime="2026-07-15">15 Jul 2026 · Pendiente</time>
+          </li>
+
+        </ol>
+      </div>
+      <!-- /Widget timeline -->
+
+    </aside>
+    <!-- /PROJECT SIDEBAR -->
+
+
+    <!-- ============================================================
+         STATUS SECTION — Estado mecánico por sistema
+         Área: status (100% del ancho)
+         Grid intrínseco con auto-fit + minmax(300px, 1fr)
+         ============================================================ -->
+    <section class="status-section" aria-labelledby="status-heading">
+
+      <div class="status-section__header">
+        <h2 class="status-section__title" id="status-heading">Estado Mecánico por Sistema</h2>
+        <span class="badge badge--blue">6 sistemas monitoreados</span>
+      </div>
+
+      <!-- Grid de tarjetas de estado -->
+      <div class="status-grid" role="list" aria-label="Tarjetas de estado de sistemas mecánicos">
+
+
+        <!-- ── Tarjeta 1: Motor ── -->
+        <article class="status-card status-card--warning" role="listitem" aria-labelledby="card-motor-title">
+
+          <div class="status-card__header">
+            <div class="status-card__icon-wrapper status-card__icon-wrapper--warning" aria-hidden="true">🔩</div>
+            <div>
+              <h3 class="status-card__title" id="card-motor-title">Motor</h3>
+              <p class="status-card__category">Grupo motopropulsor · 2.8L Diesel Turbo</p>
+            </div>
+            <span class="badge badge--warning">En revisión</span>
+          </div>
+
+          <div class="status-card__body">
+            <p class="status-card__kpi status-card__kpi--warning" aria-label="55% completado">55%</p>
+            <p class="status-card__description">
+              Desmontaje completo realizado. Rectificación de cigüeñal en proceso. Pistones y
+              anillos nuevos en espera de instalación. Turbocompresor ya reemplazado.
+            </p>
+          </div>
+
+          <div class="status-card__footer">
+            <div class="status-card__progress-label">
+              <span>Avance</span>
+              <span>55 / 100</span>
+            </div>
+            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"
+              aria-label="Progreso motor: 55%">
+              <div class="progress-bar__fill" style="width: 55%;" aria-hidden="true"></div>
+            </div>
+            <time class="status-card__timestamp" datetime="2026-06-09">
+              Última actualización: 09 Jun 2026 · 14:32
+            </time>
+          </div>
+
+        </article>
+        <!-- /Tarjeta Motor -->
+
+
+        <!-- ── Tarjeta 2: Suspensión ── -->
+        <article class="status-card status-card--active" role="listitem" aria-labelledby="card-suspension-title">
+
+          <div class="status-card__header">
+            <div class="status-card__icon-wrapper status-card__icon-wrapper--success" aria-hidden="true">🔄</div>
+            <div>
+              <h3 class="status-card__title" id="card-suspension-title">Suspensión</h3>
+              <p class="status-card__category">Sistema de amortiguación · 4x4</p>
+            </div>
+            <span class="badge badge--success">Completado</span>
+          </div>
+
+          <div class="status-card__body">
+            <p class="status-card__kpi status-card__kpi--success" aria-label="100% completado">100%</p>
+            <p class="status-card__description">
+              Amortiguadores Bilstein B8 instalados en los 4 ejes. Resortes helicoidales reforzados
+              montados. Bujes de poliuretano nuevos. Alineación de geometría completada.
+            </p>
+          </div>
+
+          <div class="status-card__footer">
+            <div class="status-card__progress-label">
+              <span>Avance</span>
+              <span>100 / 100</span>
+            </div>
+            <div class="progress-bar progress-bar--success" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+              aria-valuemax="100" aria-label="Progreso suspensión: 100%">
+              <div class="progress-bar__fill" style="width: 100%;" aria-hidden="true"></div>
+            </div>
+            <time class="status-card__timestamp" datetime="2026-05-28">
+              Última actualización: 28 May 2026 · 09:15
+            </time>
+          </div>
+
+        </article>
+        <!-- /Tarjeta Suspensión -->
+
+
+        <!-- ── Tarjeta 3: Frenos ── -->
+        <article class="status-card status-card--bronze" role="listitem" aria-labelledby="card-frenos-title">
+
+          <div class="status-card__header">
+            <div class="status-card__icon-wrapper status-card__icon-wrapper--bronze" aria-hidden="true">🛑</div>
+            <div>
+              <h3 class="status-card__title" id="card-frenos-title">Frenos</h3>
+              <p class="status-card__category">Sistema de frenado · Hidráulico ABS</p>
+            </div>
+            <span class="badge badge--bronze">En progreso</span>
+          </div>
+
+          <div class="status-card__body">
+            <p class="status-card__kpi status-card__kpi--bronze" aria-label="80% completado">80%</p>
+            <p class="status-card__description">
+              Discos ventilados Brembo instalados en eje delantero. Pastillas de alto rendimiento
+              montadas. Eje trasero pendiente de instalación. Líquido de frenos DOT 5.1 listo.
+            </p>
+          </div>
+
+          <div class="status-card__footer">
+            <div class="status-card__progress-label">
+              <span>Avance</span>
+              <span>80 / 100</span>
+            </div>
+            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+              aria-label="Progreso frenos: 80%">
+              <div class="progress-bar__fill" style="width: 80%;" aria-hidden="true"></div>
+            </div>
+            <time class="status-card__timestamp" datetime="2026-06-08">
+              Última actualización: 08 Jun 2026 · 11:47
+            </time>
+          </div>
+
+        </article>
+        <!-- /Tarjeta Frenos -->
+
+
+        <!-- ── Tarjeta 4: Transmisión ── -->
+        <article class="status-card status-card--pending" role="listitem" aria-labelledby="card-transmision-title">
+
+          <div class="status-card__header">
+            <div class="status-card__icon-wrapper status-card__icon-wrapper--blue" aria-hidden="true">⚙️</div>
+            <div>
+              <h3 class="status-card__title" id="card-transmision-title">Transmisión</h3>
+              <p class="status-card__category">Caja automática · 6 velocidades</p>
+            </div>
+            <span class="badge badge--blue">Iniciando</span>
+          </div>
+
+          <div class="status-card__body">
+            <p class="status-card__kpi status-card__kpi--blue" aria-label="25% completado">25%</p>
+            <p class="status-card__description">
+              Caja de cambios extraída y en diagnóstico especializado. Detección de desgaste en
+              convertidor de par. Repuestos en tránsito desde distribuidora oficial Toyota.
+            </p>
+          </div>
+
+          <div class="status-card__footer">
+            <div class="status-card__progress-label">
+              <span>Avance</span>
+              <span>25 / 100</span>
+            </div>
+            <div class="progress-bar progress-bar--blue" role="progressbar" aria-valuenow="25" aria-valuemin="0"
+              aria-valuemax="100" aria-label="Progreso transmisión: 25%">
+              <div class="progress-bar__fill" style="width: 25%;" aria-hidden="true"></div>
+            </div>
+            <time class="status-card__timestamp" datetime="2026-06-10">
+              Última actualización: 10 Jun 2026 · 08:00
+            </time>
+          </div>
+
+        </article>
+        <!-- /Tarjeta Transmisión -->
+
+
+        <!-- ── Tarjeta 5: Sistema Eléctrico ── -->
+        <article class="status-card status-card--danger" role="listitem" aria-labelledby="card-electrico-title">
+
+          <div class="status-card__header">
+            <div class="status-card__icon-wrapper status-card__icon-wrapper--danger" aria-hidden="true">⚡</div>
+            <div>
+              <h3 class="status-card__title" id="card-electrico-title">Sistema Eléctrico</h3>
+              <p class="status-card__category">Cableado · ECU · Sensores</p>
+            </div>
+            <span class="badge badge--danger">Bloqueado</span>
+          </div>
+
+          <div class="status-card__body">
+            <p class="status-card__kpi status-card__kpi--danger" aria-label="15% completado">15%</p>
+            <p class="status-card__description">
+              Se detectaron cortocircuitos en el arnés de cableado principal. ECU enviada a
+              diagnóstico externo. Alternador y batería reemplazados. Reprogramación pendiente.
+            </p>
+          </div>
+
+          <div class="status-card__footer">
+            <div class="status-card__progress-label">
+              <span>Avance</span>
+              <span>15 / 100</span>
+            </div>
+            <div class="progress-bar" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"
+              aria-label="Progreso sistema eléctrico: 15%">
+              <div class="progress-bar__fill" style="width: 15%;" aria-hidden="true"></div>
+            </div>
+            <time class="status-card__timestamp" datetime="2026-06-10">
+              Última actualización: 10 Jun 2026 · 09:30
+            </time>
+          </div>
+
+        </article>
+        <!-- /Tarjeta Sistema Eléctrico -->
+
+
+        <!-- ── Tarjeta 6: Carrocería ── -->
+        <article class="status-card" role="listitem" aria-labelledby="card-carroceria-title">
+
+          <div class="status-card__header">
+            <div class="status-card__icon-wrapper status-card__icon-wrapper--bronze" aria-hidden="true">🚘</div>
+            <div>
+              <h3 class="status-card__title" id="card-carroceria-title">Carrocería</h3>
+              <p class="status-card__category">Estructura · Pintura · Acabados</p>
+            </div>
+            <span class="badge badge--warning">Pendiente</span>
+          </div>
+
+          <div class="status-card__body">
+            <p class="status-card__kpi" aria-label="0% completado">0%</p>
+            <p class="status-card__description">
+              Fase programada para inicio el 01 de Julio 2026. Se realizará pulido de paneles,
+              corrección de imperfecciones y re-aplicación del color Bronce Óxido original de
+              fábrica con barniz cerámico de protección UV.
+            </p>
+          </div>
+
+          <div class="status-card__footer">
+            <div class="status-card__progress-label">
+              <span>Avance</span>
+              <span>0 / 100</span>
+            </div>
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+              aria-label="Progreso carrocería: 0%">
+              <div class="progress-bar__fill" style="width: 0%;" aria-hidden="true"></div>
+            </div>
+            <time class="status-card__timestamp" datetime="2026-06-10">
+              Programado: 01 Jul 2026
+            </time>
+          </div>
+
+        </article>
+        <!-- /Tarjeta Carrocería -->
+
+
+      </div>
+      <!-- /status-grid -->
+
+    </section>
+    <!-- /STATUS SECTION -->
+
+
+    <!-- ============================================================
+         INVENTORY SECTION — Inventario de repuestos
+         Área: parts (100% del ancho)
+         Microestructura Flexbox por ítem
+         ============================================================ -->
+    <section class="inventory-section" aria-labelledby="inventory-heading">
+
+      <!-- Encabezado de la sección -->
+      <div class="inventory-section__header">
+        <h2 class="inventory-section__title" id="inventory-heading">Inventario de Repuestos</h2>
+        <div class="inventory-toolbar">
+          <!-- Búsqueda -->
+          <div class="inventory-search" role="search">
+            <span class="inventory-search__icon" aria-hidden="true">🔍</span>
+            <input class="inventory-search__input" type="search" id="search-repuestos" name="search-repuestos"
+              placeholder="Buscar repuesto o código..." aria-label="Buscar repuesto por nombre o código" />
+          </div>
+          <!-- Filtros -->
+          <span class="badge badge--bronze">8 repuestos</span>
+          <button class="btn btn--secondary btn--sm" type="button" id="btn-filtrar"
+            aria-label="Abrir opciones de filtrado">
+            🎛️ Filtrar
+          </button>
+          <button class="btn btn--primary btn--sm" type="button" id="btn-agregar-repuesto"
+            aria-label="Agregar nuevo repuesto al inventario">
+            ＋ Agregar
+          </button>
+        </div>
+      </div>
+
+      <!-- Lista de repuestos -->
+      <div class="parts-list" role="region" aria-label="Lista de repuestos del proyecto">
+
+        <!-- Encabezado de columnas -->
+        <div class="parts-list__head" role="row" aria-hidden="true">
+          <span class="parts-list__head-label" style="width:18px;flex-shrink:0;"></span>
+          <span class="parts-list__head-label" style="flex:1;min-width:0;">Repuesto / Código</span>
+          <span class="parts-list__head-label" style="flex-shrink:0;min-width:90px;">Estado</span>
+          <span class="parts-list__head-label" style="flex-shrink:0;min-width:80px;text-align:right;">Precio</span>
+          <span class="parts-list__head-label" style="flex-shrink:0;min-width:120px;text-align:right;">Acciones</span>
+        </div>
+
+
+        <!-- ── Repuesto 1 ── -->
+        <div class="parts-item" role="row" id="repuesto-001">
+          <input class="part-checkbox" type="checkbox" id="check-001"
+            aria-label="Seleccionar filtro de aceite Toyota" />
+
+          <!-- Información del repuesto -->
+          <div class="part-info">
+            <span class="part-name">Filtro de Aceite Toyota Original</span>
+            <span class="part-code text-mono">COD: TYT-90915-YZZF1</span>
+          </div>
+
+          <!-- Disponibilidad -->
+          <div class="part-status" role="cell">
+            <span class="badge badge--success">✔ Disponible</span>
+          </div>
+
+          <!-- Precio -->
+          <span class="part-price" role="cell" aria-label="Precio: 320 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$320.00</span>
+          </span>
+
+          <!-- Acciones -->
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-001"
+              aria-label="Ver detalles del filtro de aceite Toyota">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-001"
+              aria-label="Editar filtro de aceite Toyota">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 1 -->
+
+
+        <!-- ── Repuesto 2 ── -->
+        <div class="parts-item" role="row" id="repuesto-002">
+          <input class="part-checkbox" type="checkbox" id="check-002"
+            aria-label="Seleccionar amortiguador delantero Bilstein" />
+
+          <div class="part-info">
+            <span class="part-name">Amortiguador Delantero Bilstein B8 (par)</span>
+            <span class="part-code text-mono">COD: BIL-24-185520</span>
+          </div>
+
+          <div class="part-status" role="cell">
+            <span class="badge badge--success">✔ Instalado</span>
+          </div>
+
+          <span class="part-price" role="cell" aria-label="Precio: 8500 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$8,500.00</span>
+          </span>
+
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-002"
+              aria-label="Ver detalles del amortiguador Bilstein">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-002"
+              aria-label="Editar amortiguador Bilstein">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 2 -->
+
+
+        <!-- ── Repuesto 3 ── -->
+        <div class="parts-item" role="row" id="repuesto-003">
+          <input class="part-checkbox" type="checkbox" id="check-003"
+            aria-label="Seleccionar disco de freno Brembo delantero" />
+
+          <div class="part-info">
+            <span class="part-name">Disco de Freno Delantero Brembo Ventilado</span>
+            <span class="part-code text-mono">COD: BRE-09.A400.11</span>
+          </div>
+
+          <div class="part-status" role="cell">
+            <span class="badge badge--success">✔ Instalado</span>
+          </div>
+
+          <span class="part-price" role="cell" aria-label="Precio: 4200 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$4,200.00</span>
+          </span>
+
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-003"
+              aria-label="Ver detalles del disco Brembo">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-003"
+              aria-label="Editar disco Brembo">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 3 -->
+
+
+        <!-- ── Repuesto 4 ── -->
+        <div class="parts-item" role="row" id="repuesto-004">
+          <input class="part-checkbox" type="checkbox" id="check-004"
+            aria-label="Seleccionar convertidor de par Toyota" />
+
+          <div class="part-info">
+            <span class="part-name">Convertidor de Par Automático Toyota OEM</span>
+            <span class="part-code text-mono">COD: TYT-32000-60480</span>
+          </div>
+
+          <div class="part-status" role="cell">
+            <span class="badge badge--warning">⏳ En tránsito</span>
+          </div>
+
+          <span class="part-price" role="cell" aria-label="Precio: 12800 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$12,800.00</span>
+          </span>
+
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-004"
+              aria-label="Ver detalles del convertidor de par">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-004"
+              aria-label="Editar convertidor de par">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 4 -->
+
+
+        <!-- ── Repuesto 5 ── -->
+        <div class="parts-item" role="row" id="repuesto-005">
+          <input class="part-checkbox" type="checkbox" id="check-005"
+            aria-label="Seleccionar arnés de cableado principal" />
+
+          <div class="part-info">
+            <span class="part-name">Arnés de Cableado Principal — Motor y Chasis</span>
+            <span class="part-code text-mono">COD: TYT-82111-60F50</span>
+          </div>
+
+          <div class="part-status" role="cell">
+            <span class="badge badge--danger">✖ No disponible</span>
+          </div>
+
+          <span class="part-price" role="cell" aria-label="Precio: 9600 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$9,600.00</span>
+          </span>
+
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-005"
+              aria-label="Ver detalles del arnés de cableado">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-005"
+              aria-label="Editar arnés de cableado">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 5 -->
+
+
+        <!-- ── Repuesto 6 ── -->
+        <div class="parts-item" role="row" id="repuesto-006">
+          <input class="part-checkbox" type="checkbox" id="check-006"
+            aria-label="Seleccionar kit de pistones y anillos" />
+
+          <div class="part-info">
+            <span class="part-name">Kit de Pistones y Anillos — Motor 2.8L Diesel</span>
+            <span class="part-code text-mono">COD: FED-P4562-STD</span>
+          </div>
+
+          <div class="part-status" role="cell">
+            <span class="badge badge--blue">📦 En bodega</span>
+          </div>
+
+          <span class="part-price" role="cell" aria-label="Precio: 7200 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$7,200.00</span>
+          </span>
+
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-006"
+              aria-label="Ver detalles del kit de pistones">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-006"
+              aria-label="Editar kit de pistones">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 6 -->
+
+
+        <!-- ── Repuesto 7 ── -->
+        <div class="parts-item" role="row" id="repuesto-007">
+          <input class="part-checkbox" type="checkbox" id="check-007" aria-label="Seleccionar turbocompresor Garrett" />
+
+          <div class="part-info">
+            <span class="part-name">Turbocompresor Garrett GT2056V — Reemplazo OEM</span>
+            <span class="part-code text-mono">COD: GAR-796122-5004S</span>
+          </div>
+
+          <div class="part-status" role="cell">
+            <span class="badge badge--success">✔ Instalado</span>
+          </div>
+
+          <span class="part-price" role="cell" aria-label="Precio: 18500 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$18,500.00</span>
+          </span>
+
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-007"
+              aria-label="Ver detalles del turbocompresor Garrett">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-007"
+              aria-label="Editar turbocompresor Garrett">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 7 -->
+
+
+        <!-- ── Repuesto 8 ── -->
+        <div class="parts-item" role="row" id="repuesto-008">
+          <input class="part-checkbox" type="checkbox" id="check-008" aria-label="Seleccionar batería AGM Bosch" />
+
+          <div class="part-info">
+            <span class="part-name">Batería AGM Bosch S5 110Ah — Línea Premium</span>
+            <span class="part-code text-mono">COD: BOS-S5A11-AGM</span>
+          </div>
+
+          <div class="part-status" role="cell">
+            <span class="badge badge--success">✔ Instalado</span>
+          </div>
+
+          <span class="part-price" role="cell" aria-label="Precio: 5400 pesos mexicanos">
+            <span class="part-price__currency">MXN</span>
+            <span class="part-price__value">$5,400.00</span>
+          </span>
+
+          <div class="part-actions" role="cell">
+            <button class="btn btn--ghost btn--sm btn--icon" type="button" id="btn-ver-008"
+              aria-label="Ver detalles de la batería Bosch">
+              👁️
+            </button>
+            <button class="btn btn--secondary btn--sm" type="button" id="btn-editar-008"
+              aria-label="Editar batería Bosch">
+              ✏️ Editar
+            </button>
+          </div>
+        </div>
+        <!-- /Repuesto 8 -->
+
+
+        <!-- Totalizador de la lista -->
+        <div class="parts-list__footer" role="contentinfo" aria-label="Resumen del inventario">
+          <p class="parts-list__count">
+            Mostrando <strong>8</strong> de <strong>8</strong> repuestos registrados
+          </p>
+          <div class="parts-list__total">
+            <span class="parts-list__total-label">Total del inventario:</span>
+            <span class="parts-list__total-value" aria-label="Total: 66 mil 520 pesos mexicanos">
+              $66,520.00 MXN
+            </span>
+          </div>
+        </div>
+
+      </div>
+      <!-- /parts-list -->
+
+    </section>
+    <!-- /INVENTORY SECTION -->
+
+
+    <!-- ============================================================
+         FOOTER — Pie de página del dashboard
+         Área: footer (100% del ancho)
+         ============================================================ -->
+    <footer class="dashboard-footer" role="contentinfo">
+
+      <!-- Marca del sistema -->
+      <div class="footer-brand">
+        <span class="footer-brand__logo" aria-hidden="true">🔧</span>
+        <span class="footer-brand__name">MecaTrack Pro · Dashboard de Restauración</span>
+      </div>
+
+      <!-- Metadatos del proyecto -->
+      <div class="footer-meta" role="list" aria-label="Información del proyecto">
+        <span class="footer-meta__item" role="listitem">
+          <span aria-hidden="true">🚗</span>
+          Toyota Land Cruiser Prado 2024
+        </span>
+        <span class="footer-meta__item footer-meta__item--highlight" role="listitem">
+          <span aria-hidden="true">📁</span>
+          ORD-2026-0047
+        </span>
+        <time class="footer-meta__item" datetime="2026-06-10T10:45:00-06:00" role="listitem">
+          <span aria-hidden="true">🕒</span>
+          Actualizado: 10 Jun 2026 · 10:45
+        </time>
+      </div>
+
+      <!-- Links y derechos -->
+      <nav class="footer-links" aria-label="Vínculos del pie de página">
+        <a href="#" aria-label="Ver política de privacidad">Privacidad</a>
+        <a href="#" aria-label="Ver términos de servicio">Términos</a>
+        <a href="#" aria-label="Contactar al soporte técnico">Soporte</a>
+        <small>
+          <span aria-hidden="true">©</span>
+          2026 MecaTrack Pro. Todos los derechos reservados.
+        </small>
+      </nav>
+
+    </footer>
+    <!-- /FOOTER -->
+
+
+  </div>
+  <!-- /DASHBOARD WRAPPER -->
+
+</body>
+
+</html>
